@@ -133,3 +133,5 @@ server.mjs               零依赖静态服务器 + SPA fallback
 - **深色主题为中性纯黑**：原 `--background` 是 `oklch(16.5% .006 105)`（约 #0f0e0c，带黄绿偏色，所以看着"不是纯黑"）。现改为 `oklch(10% 0 0)`（≈#030303）完全中性，卡片/次级面/边框同步下移保持层次：card 14%、popover 15%、muted 16%、secondary 18%、accent 20%、input 22%、border 42%。浅色主题不受影响（`html:not(.dark)` 特异性更高）。校验 `node scripts/check-dark.mjs`。
 
 - **帖子互动栏图标精细化**：原图标 `size-4`(16px) + `stroke-width: 2`，小尺寸下线条糊。改为 18px + 1.7，按钮去边框/底色、数字 `tabular-nums` 对齐，hover 图标微上浮放大，已赞态实心红心（`[aria-label="取消喜欢"]` 时 fill）。选择器用 `aria-label` 精确命中（`$="条回复"` 覆盖"0/1/2/3 条回复"，`$="喜欢"` 覆盖喜欢与取消喜欢两态）。校验 `node scripts/check-icons.mjs`。
+
+- **互动栏五动作（点赞→评论→转发→分享→收藏）**：原结构是"评论、转发、喜欢、复制链接"四个，其中分享靠 `ml-auto` 单独右对齐。现按 Instagram 顺序重排为五个并列动作，新增 `bookmark`（收藏）图标（lucide 原路径内联定义，因该图标原本未打进 bundle）。收藏当前为占位提示，与转发一致，等账号系统上线再接状态。改动在 `public/assets/thread-card-BiVhtaO2.js` 的 `O` 函数；分享按钮 `aria-label` 由"复制链接"改为"分享"，内联 CSS 选择器已同步。校验 `node scripts/check-five.mjs`。

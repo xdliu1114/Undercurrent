@@ -155,7 +155,8 @@ body .rounded-xl { border-radius: 14px !important; }
 body > main [aria-label$="条回复"] > svg,
 body > main [aria-label="转发"] > svg,
 body > main [aria-label$="喜欢"] > svg,
-body > main [aria-label="复制链接"] > svg {
+body > main [aria-label="分享"] > svg,
+body > main [aria-label="收藏"] > svg {
   width: 18px !important;
   height: 18px !important;
   stroke-width: 1.7 !important;
@@ -165,7 +166,8 @@ body > main [aria-label="复制链接"] > svg {
 body > main [aria-label$="条回复"],
 body > main [aria-label="转发"],
 body > main [aria-label$="喜欢"],
-body > main [aria-label="复制链接"] {
+body > main [aria-label="分享"],
+body > main [aria-label="收藏"] {
   border: 0 !important;
   outline: 0 !important;
   background: transparent !important;
@@ -179,7 +181,8 @@ body > main [aria-label="复制链接"] {
 /* hover：图标轻微上浮放大，数字不动 */
 body > main [aria-label$="条回复"]:hover > svg,
 body > main [aria-label="转发"]:hover > svg,
-body > main [aria-label="复制链接"]:hover > svg {
+body > main [aria-label="分享"]:hover > svg,
+body > main [aria-label="收藏"]:hover > svg {
   transform: translateY(-1px) scale(1.06);
 }
 /* 点赞 hover / 已赞：心形弹性放大 */
@@ -192,20 +195,23 @@ body > main [aria-label="取消喜欢"] > svg {
   stroke-width: 1.4 !important;
 }
 /* 复制链接图标 hover 旋转微动 */
-body > main [aria-label="复制链接"]:hover > svg {
+body > main [aria-label="分享"]:hover > svg,
+body > main [aria-label="收藏"]:hover > svg {
   transform: translateY(-1px);
 }
 @media (prefers-reduced-motion: reduce) {
   body > main [aria-label$="条回复"] > svg,
   body > main [aria-label="转发"] > svg,
   body > main [aria-label$="喜欢"] > svg,
-  body > main [aria-label="复制链接"] > svg {
+  body > main [aria-label="分享"] > svg,
+body > main [aria-label="收藏"] > svg {
     transition: none;
   }
   body > main [aria-label$="喜欢"]:hover > svg,
   body > main [aria-label$="条回复"]:hover > svg,
   body > main [aria-label="转发"]:hover > svg,
-  body > main [aria-label="复制链接"]:hover > svg {
+  body > main [aria-label="分享"]:hover > svg,
+body > main [aria-label="收藏"]:hover > svg {
     transform: none;
   }
 }
