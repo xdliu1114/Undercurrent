@@ -135,3 +135,5 @@ server.mjs               零依赖静态服务器 + SPA fallback
 - **帖子互动栏图标精细化**：原图标 `size-4`(16px) + `stroke-width: 2`，小尺寸下线条糊。改为 18px + 1.7，按钮去边框/底色、数字 `tabular-nums` 对齐，hover 图标微上浮放大，已赞态实心红心（`[aria-label="取消喜欢"]` 时 fill）。选择器用 `aria-label` 精确命中（`$="条回复"` 覆盖"0/1/2/3 条回复"，`$="喜欢"` 覆盖喜欢与取消喜欢两态）。校验 `node scripts/check-icons.mjs`。
 
 - **互动栏五动作（点赞→评论→转发→分享→收藏）**：原结构是"评论、转发、喜欢、复制链接"四个，其中分享靠 `ml-auto` 单独右对齐。现按 Instagram 顺序重排为五个并列动作，新增 `bookmark`（收藏）图标（lucide 原路径内联定义，因该图标原本未打进 bundle）。收藏当前为占位提示，与转发一致，等账号系统上线再接状态。改动在 `public/assets/thread-card-BiVhtaO2.js` 的 `O` 函数；分享按钮 `aria-label` 由"复制链接"改为"分享"，内联 CSS 选择器已同步。校验 `node scripts/check-five.mjs`。
+
+- **回复框字号修正**：`<textarea id="reply">` 上同时有 `text-base`(16px) 和 `md:text-sm`(14px)，实际渲染取了 16px，点开回复时文字比评论正文大一号。用 `body textarea#reply { font-size: 14px !important }`（含 `::placeholder`）锁定为与评论区一致的字号。
