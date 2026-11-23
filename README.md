@@ -129,3 +129,5 @@ server.mjs               零依赖静态服务器 + SPA fallback
 5. **排错**：如果页面显示 `This page couldn't load`，基本都是某个懒加载 chunk 404 了（本目录最初只抓了首页预加载的 8 个 chunk，补上 5 个路由 chunk 后已修复）。检查 DevTools Network 里的 `/assets/*.js` 是否为 404 即可。
 
 - **按钮圆角**：原站全局 `--radius` 只有 `0.2rem`（3.2px），按钮和输入框看起来接近直角。现在提到 `0.625rem`（10px），并显式覆盖 `.rounded-sm`(6px) / `.rounded-md`(8px) / `.rounded-lg`(10px) / `.rounded-xl`(14px)，不依赖 CSS 变量计算。没有圆角类的 `button` / `select` / `textarea` / `input` 由兜底规则补 8px；`rounded-full` 的头像和播放键不受影响（保持圆形）。校验脚本 `node scripts/check-radius.mjs`。
+
+- **深色主题为中性纯黑**：原 `--background` 是 `oklch(16.5% .006 105)`（约 #0f0e0c，带黄绿偏色，所以看着"不是纯黑"）。现改为 `oklch(10% 0 0)`（≈#030303）完全中性，卡片/次级面/边框同步下移保持层次：card 14%、popover 15%、muted 16%、secondary 18%、accent 20%、input 22%、border 42%。浅色主题不受影响（`html:not(.dark)` 特异性更高）。校验 `node scripts/check-dark.mjs`。
